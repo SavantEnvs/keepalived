@@ -1,0 +1,14 @@
+project: savantenvs/keepalived
+target: config
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/config/testsuite
+cmds:
+  # keepalived --config-test on the fuzzed file: the whole configuration parser (lib/parser.c with
+  # includes/definitions/sequences + global, vrrp, checker, bfd and track_file keywords) and the
+  # post-parse validation. Config errors exit non-zero, which is not a crash. AFL++-instrumented
+  # build of the sanitized binary (mayhem/build.sh step 1b).
+  - cmd: /mayhem/mayhem/out/keepalived-afl --config-test --dont-fork --log-console --log-detail -f @@
+    afl: true
+    filepath: keepalived.conf
+    timeout: 10

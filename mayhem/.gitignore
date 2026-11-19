@@ -1,0 +1,5 @@
+# Build trees and outputs written by mayhem/build.sh (removed by git clean -ffdX)
+/build-afl/
+/build-fuzz/
+/build-test/
+/out/

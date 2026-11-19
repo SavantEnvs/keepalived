@@ -1,0 +1,9 @@
+project: savantenvs/keepalived
+target: netlink
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/netlink/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/fuzz_netlink
+    libfuzzer: true
+    timeout: 5

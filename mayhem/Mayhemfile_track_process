@@ -1,0 +1,9 @@
+project: savantenvs/keepalived
+target: track_process
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/track_process/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/fuzz_track_process
+    libfuzzer: true
+    timeout: 5

@@ -1,0 +1,9 @@
+project: savantenvs/keepalived
+target: vrrp_packet
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/vrrp_packet/testsuite
+cmds:
+  - cmd: /mayhem/mayhem/out/fuzz_vrrp_packet
+    libfuzzer: true
+    timeout: 5
